@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { Profile, SkillCategory, Project, Milestone, Education, Certification } from '../models/portfolio.model';
+import { Profile, SkillCategory, Project, Achievement, TimelineItem, Education, Certification } from '../models/portfolio.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,41 +26,48 @@ export class PortfolioService {
   // Categorized Skills
   private readonly _skills = signal<SkillCategory[]>([
     {
-      category: 'Programming',
+      category: 'Programming Languages',
       icon: 'icon-code',
       skills: [
-        { name: 'Java', value: '' },
-        { name: 'C++', value: '' },
-        { name: 'Python', value: '' },
-        { name: 'TypeScript', value: '' }
-      ]
-    },
-    {
-      category: 'AI & Data Science',
-      icon: 'icon-brain',
-      skills: [
-        { name: 'Machine Learning', value: '' },
-        { name: 'Data Analytics', value: '' },
-        { name: 'Statistical Modeling', value: '' }
+        { name: 'Java', level: 'Advanced' },
+        { name: 'C++', level: 'Advanced' },
+        { name: 'Python', level: 'Advanced' },
+        { name: 'TypeScript', level: 'Intermediate' }
       ]
     },
     {
       category: 'Web Development',
       icon: 'icon-globe',
       skills: [
-        { name: 'Angular', value: '' },
-        { name: 'Firebase', value: '' },
-        { name: 'HTML5 & CSS3', value: '' },
-        { name: 'Modern Responsive Design', value: '' }
+        { name: 'Angular', level: 'Advanced' },
+        { name: 'HTML5 & CSS3', level: 'Advanced' },
+        { name: 'Modern Responsive Design', level: 'Advanced' },
+        { name: 'Firebase', level: 'Intermediate' }
       ]
     },
     {
-      category: 'Systems & Tools',
+      category: 'AI & Data Science',
+      icon: 'icon-brain',
+      skills: [
+        { name: 'Machine Learning', level: 'Intermediate' },
+        { name: 'Data Analytics', level: 'Intermediate' },
+        { name: 'Statistical Modeling', level: 'Intermediate' }
+      ]
+    },
+    {
+      category: 'Databases',
+      icon: 'icon-database',
+      skills: [
+        { name: 'SQL & Databases', level: 'Intermediate' },
+        { name: 'RDBMS PostgreSQL', level: 'Intermediate' }
+      ]
+    },
+    {
+      category: 'Tools & Platforms',
       icon: 'icon-terminal',
       skills: [
-        { name: 'Linux Command Line', value: '' },
-        { name: 'Git & GitHub', value: '' },
-        { name: 'SQL & Databases', value: '' }
+        { name: 'Linux Command Line', level: 'Advanced' },
+        { name: 'Git & GitHub', level: 'Advanced' }
       ]
     }
   ]);
@@ -69,41 +76,126 @@ export class PortfolioService {
   private readonly _projects = signal<Project[]>([
     {
       title: 'LabourLink',
-      description: 'LabourLink is a platform that connects workers and employers, helping users find jobs, hire workers, and manage labor-related opportunities efficiently.',
+      description: 'LabourLink is a professional digital network connecting daily wage workers and local employers directly, facilitating commission-free job placements and secure handshakes.',
       imageUrl: 'assets/project-labourlink.png',
       tags: ['Angular', 'TypeScript', 'Firebase', 'HTML', 'CSS'],
-      githubUrl: 'https://github.com/pilankarrohan-prog',
+      githubUrl: 'https://github.com/pilankarrohan-prog/LabourLink',
       demoUrl: 'https://labourlink-9167a.web.app/',
-      isFeatured: true
+      isFeatured: true,
+      problemStatement: 'Finding reliable, short-term skilled labor in India remains highly fragmented. Daily wage workers suffer from massive underemployment due to lack of a centralized platform, while local employers face security issues, pricing volatility, and steep intermediary commissions when trying to find trusted help.',
+      features: [
+        'Dual Interface Portals: Separate custom dashboards tailored for worker registration and employer posting.',
+        'Real-Time Job Feeds: Immediate placement matching using real-time posting boards with wage transparent parameters.',
+        'Zero Brokerage Commission: Direct digital handshake between workers and employers eliminating middlemen.',
+        'Firebase Engine: Leverages real-time sync via Firestore database, secure OTP auth flows, and CDN web hosting.'
+      ],
+      techStackGrouped: [
+        {
+          category: 'Frontend & UI',
+          items: ['Angular', 'TypeScript', 'Responsive SCSS / CSS Grid', 'HTML5 Semantic Engine']
+        },
+        {
+          category: 'Backend & Cloud Services',
+          items: ['Cloud Firestore (NoSQL)', 'Firebase Authentication', 'Firebase Web Hosting CDN']
+        }
+      ],
+      timeline: 'Jan 2025 - Mar 2025',
+      gallery: [
+        'assets/project-labourlink.png',
+        'assets/project-analytics.png',
+        'assets/project-neural.png'
+      ]
     }
   ]);
 
-  // Milestones/Achievements list
-  private readonly _milestones = signal<Milestone[]>([
+  // Achievements/Milestones list
+  private readonly _achievements = signal<Achievement[]>([
     {
-      date: 'IIT BOMBAY',
-      title: 'College Ambassador at Techfest',
+      title: 'College Ambassador – Techfest IIT Bombay',
       description: 'Appointed as College Ambassador for Techfest, IIT Bombay. Spearheaded technical event campaigns and built a community of tech enthusiasts across local engineering hubs.',
-      icon: 'icon-award'
+      icon: 'icon-award',
+      badge: 'IIT Bombay'
     },
     {
-      date: 'COMPETITIVE',
       title: 'Rank Under 6000',
       description: 'Secured an outstanding engineering entrance rank under 6000 among lakhs of participating candidates, validating a strong logical, mathematics, and science foundation.',
-      icon: 'icon-award'
+      icon: 'icon-award',
+      badge: 'Rank'
     },
     {
-      date: 'HACKATHONS',
-      title: 'Technical Event Participation',
-      description: 'Regular competitor in national coding hackathons and technical project presentation symposiums, developing software prototypes under tight constraints.',
+      title: 'Technical Workshops',
+      description: 'Organized and participated in professional training workshops covering Machine Learning architectures, Cloud operations, and Object-Oriented software architectures in C++ & Java.',
+      icon: 'icon-code',
+      badge: 'Workshops'
+    },
+    {
+      title: 'Certifications',
+      description: 'Earned 14+ verified credentials in C++, Python, Data Analytics, Databases, and IoT from Cisco Networking Academy, Coursera, and IIT Bombay SINE.',
+      icon: 'icon-edu',
+      badge: 'Credentials'
+    },
+    {
+      title: 'Events and Competitions',
+      description: 'Competed in multiple national level coding hackathons, logic challenges, and prototype presentation events, solving engineering problems under strict constraints.',
+      icon: 'icon-award',
+      badge: 'Competitions'
+    }
+  ]);
+
+  // Journey Timeline items
+  private readonly _timeline = signal<TimelineItem[]>([
+    {
+      year: '2022',
+      title: 'Started Programming',
+      description: 'Began writing code, learning algorithmic logic, and building foundational problem-solving frameworks.',
       icon: 'icon-code'
     },
     {
-      date: 'CREDENTIALS',
-      title: 'Certificates and Workshops',
-      description: 'Completed professional training workshops on Machine Learning architectures, Cloud operations, and Object-Oriented software architectures in C++ & Java.',
+      year: '2023',
+      title: 'Learned Java & C++',
+      description: 'Mastered core Object-Oriented Programming principles, memory layouts, standard template libraries, and algorithmic performance structures.',
+      icon: 'icon-terminal'
+    },
+    {
+      year: '2024',
+      title: 'Web Development Journey',
+      description: 'Explored core web technologies, responsive styles, state management, and modern DOM architectures.',
+      icon: 'icon-globe'
+    },
+    {
+      year: '2024',
+      title: 'Angular Development',
+      description: 'Adopted Angular single-page architectures, TypeScript-based layouts, responsive components, and reactive signal workflows.',
+      icon: 'icon-code'
+    },
+    {
+      year: '2025',
+      title: 'AI & Data Science Engineering',
+      description: 'Enrolled in specialized AI & DS engineering curricula, studying Machine Learning modeling, predictive statistical analysis, and database profiling.',
+      icon: 'icon-brain'
+    },
+    {
+      year: '2025',
+      title: 'LabourLink Project',
+      description: 'Designed, built, and launched LabourLink, connecting workers and employers using Angular & Firebase.',
+      icon: 'icon-award'
+    },
+    {
+      year: '2026',
+      title: 'Current Learning Goals',
+      description: 'Deepening skill matrices in advanced Angular services, machine learning models, database query tuning, and complex algorithm designs.',
       icon: 'icon-edu'
     }
+  ]);
+
+  // Currently Learning Goals
+  private readonly _currentlyLearning = signal<string[]>([
+    'Advanced Angular',
+    'Machine Learning',
+    'Data Analytics',
+    'Firebase',
+    'Artificial Intelligence',
+    'Data Structures & Algorithms'
   ]);
 
   // Education details
@@ -252,7 +344,9 @@ export class PortfolioService {
   get profile() { return this._profile.asReadonly(); }
   get skills() { return this._skills.asReadonly(); }
   get projects() { return this._projects.asReadonly(); }
-  get milestones() { return this._milestones.asReadonly(); }
+  get achievements() { return this._achievements.asReadonly(); }
+  get timeline() { return this._timeline.asReadonly(); }
+  get currentlyLearning() { return this._currentlyLearning.asReadonly(); }
   get education() { return this._education.asReadonly(); }
   get certifications() { return this._certifications.asReadonly(); }
 }

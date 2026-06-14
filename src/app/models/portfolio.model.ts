@@ -1,6 +1,6 @@
 export interface Skill {
   name: string;
-  value: string; // e.g., '90%'
+  level: 'Advanced' | 'Intermediate' | 'Familiar With';
 }
 
 export interface SkillCategory {
@@ -17,6 +17,11 @@ export interface Project {
   githubUrl: string;
   demoUrl: string;
   isFeatured?: boolean;
+  problemStatement?: string;
+  features?: string[];
+  techStackGrouped?: { category: string; items: string[] }[];
+  timeline?: string;
+  gallery?: string[];
 }
 
 export interface Milestone {
@@ -24,6 +29,20 @@ export interface Milestone {
   title: string;
   description: string;
   icon: string; // symbol icon ID, e.g. 'icon-award'
+}
+
+export interface Achievement {
+  title: string;
+  description: string;
+  icon: string; // e.g. 'icon-award'
+  badge?: string; // e.g. 'IIT Bombay', 'Rank', 'Symposium'
+}
+
+export interface TimelineItem {
+  year: string;
+  title: string;
+  description: string;
+  icon: string;
 }
 
 export interface Education {

@@ -2,22 +2,212 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Rohan Pilankar | AI & Data Science Engineer Portfolio</title>
+  <title>Rohan Pilankar | AI & Data Science Portfolio</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Premium futuristic portfolio of Rohan Pilankar - AI & DS student, aspiring AI Engineer, and Developer. Explore projects, skills, and interactive developer terminal.">
+  <meta name="description" content="AI & Data Science student skilled in Angular, Java, Python, Firebase, Machine Learning, Data Analytics, and Web Development.">
+  
+  <!-- SEO & Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/pilankarrohan-prog">
+  <meta property="og:title" content="Rohan Pilankar | AI & Data Science Portfolio">
+  <meta property="og:description" content="AI & Data Science student skilled in Angular, Java, Python, Firebase, Machine Learning, Data Analytics, and Web Development.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/pilankarrohan-prog/portfolio/main/public/assets/rohan_profile.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://github.com/pilankarrohan-prog">
+  <meta property="twitter:title" content="Rohan Pilankar | AI & Data Science Portfolio">
+  <meta property="twitter:description" content="AI & Data Science student skilled in Angular, Java, Python, Firebase, Machine Learning, Data Analytics, and Web Development.">
+  <meta property="twitter:image" content="https://raw.githubusercontent.com/pilankarrohan-prog/portfolio/main/public/assets/rohan_profile.png">
+
+  <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Structured Data (JSON-LD Schema) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Rohan Pilankar",
+    "jobTitle": "AI & Data Science Student / Software Developer",
+    "url": "https://github.com/pilankarrohan-prog",
+    "sameAs": [
+      "https://www.linkedin.com/in/rohan-pilankar-0752a932b/"
+    ],
+    "knowsAbout": [
+      "Angular", "Java", "Python", "C++", "Firebase", "Machine Learning", "Data Analytics", "Web Development", "Databases"
+    ],
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering and Technology (VPKBIET), Baramati"
+    }
+  }
+  </script>
+
+  <!-- Loading Screen Embedded Style -->
+  <style>
+    #global-loader {
+      position: fixed;
+      inset: 0;
+      background: #020205;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+    }
+    #global-loader.fade-out {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .loader-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      position: relative;
+    }
+    .loader-logo {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .loader-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+    .loader-circle {
+      fill: none;
+      stroke: url(#loaderGradient);
+      stroke-width: 3;
+      stroke-dasharray: 220;
+      stroke-dashoffset: 220;
+      animation: fillCircle 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    .loader-initials {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+      animation: pulseText 1.5s ease-in-out infinite alternate;
+      z-index: 10;
+    }
+    .loader-status {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #00f2fe;
+      letter-spacing: 3px;
+      text-shadow: 0 0 8px rgba(0, 242, 254, 0.3);
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .loader-dots {
+      animation: blinkDots 1.5s step-start infinite;
+    }
+    .loader-progress-bar {
+      width: 180px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 1px;
+      overflow: hidden;
+      position: relative;
+    }
+    .loader-progress-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #00f2fe, #b100ff);
+      box-shadow: 0 0 8px #00f2fe;
+      animation: fillProgress 2s ease-in-out infinite;
+    }
+    @keyframes fillCircle {
+      0% { stroke-dashoffset: 220; }
+      50% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -220; }
+    }
+    @keyframes pulseText {
+      0% { opacity: 0.6; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1.05); }
+    }
+    @keyframes blinkDots {
+      0%, 100% { opacity: 0; }
+      25% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+      75% { opacity: 1; }
+    }
+    @keyframes fillProgress {
+      0% { width: 0%; left: 0; }
+      50% { width: 100%; left: 0; }
+      100% { width: 0%; left: 100%; }
+    }
+  </style>
 </head>
 <body>
+  <!-- Helper SVG to define gradients for loader -->
+  <svg width="0" height="0" style="position: absolute;">
+    <defs>
+      <linearGradient id="loaderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#00f2fe" />
+        <stop offset="100%" stop-color="#b100ff" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Cybernetic Pulse Loader -->
+  <div id="global-loader">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <svg class="loader-svg" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="35" class="loader-circle" />
+        </svg>
+        <span class="loader-initials">RP</span>
+      </div>
+      <div class="loader-status">
+        <span>INITIALIZING SYSTEM</span>
+        <span class="loader-dots">...</span>
+      </div>
+      <div class="loader-progress-bar">
+        <div class="loader-progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
   <app-root></app-root>
+
+  <!-- Fade-out Script -->
+  <script>
+    window.addEventListener('load', function() {
+      const loader = document.getElementById('global-loader');
+      if (loader) {
+        loader.classList.add('fade-out');
+        setTimeout(() => {
+          loader.remove();
+        }, 600);
+      }
+    });
+  </script>
 </body>
 </html>

@@ -1,8 +1,12 @@
 <section class="skills-section scroll-reveal" id="skills" [class.revealed]="isRevealed()">
     <div class="container">
-        <h2 class="section-title text-glitch" data-text="// TECHNICAL_SKILLS">// TECHNICAL_SKILLS</h2>
+        <div class="section-header">
+            <div class="cyber-subtitle">TECHNICAL INVENTORY</div>
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="section-line"></div>
+        </div>
+
         <div class="skills-grid">
-            
             @for (cat of skillCategories(); track cat.category) {
                 <div class="skill-card glass-card hover-glow">
                     <div class="card-glow"></div>
@@ -12,14 +16,14 @@
                     </div>
                     <div class="skills-chips-wrapper">
                         @for (skill of cat.skills; track skill.name) {
-                            <div class="skill-chip">
+                            <div class="skill-chip" [class]="'level-' + skill.level.toLowerCase().replace(' ', '-')">
                                 <span class="skill-chip-name">{{ skill.name }}</span>
+                                <span class="skill-level-badge">{{ skill.level }}</span>
                             </div>
                         }
                     </div>
                 </div>
             }
-
         </div>
     </div>
 </section>

@@ -1,20 +1,30 @@
 <section class="achievements-section scroll-reveal" id="achievements" [class.revealed]="isRevealed()">
     <div class="container">
-        <h2 class="section-title text-glitch" data-text="// MILESTONES">// MILESTONES</h2>
+        <div class="section-header">
+            <div class="cyber-subtitle">SYSTEM MILESTONES</div>
+            <h2 class="section-title">Key Achievements</h2>
+            <div class="section-line"></div>
+        </div>
         
-        <div class="timeline">
-            @for (milestone of milestones(); track milestone.title) {
-                <div class="timeline-item glass-card hover-glow">
+        <div class="achievements-grid">
+            @for (ach of achievements(); track ach.title) {
+                <div class="achievement-card glass-card hover-glow" #achCard (mousemove)="onMouseMove($event, achCard)">
                     <div class="card-glow"></div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">{{ milestone.date }}</div>
-                    <div class="timeline-content">
-                        <div class="milestone-header">
-                            <svg class="icon milestone-icon"><use [attr.href]="'#' + milestone.icon"/></svg>
-                            <h3>{{ milestone.title }}</h3>
+                    <div class="ach-header">
+                        <div class="ach-icon-container">
+                            <svg class="icon ach-icon"><use [attr.href]="'#' + ach.icon"/></svg>
                         </div>
-                        <p>{{ milestone.description }}</p>
+                        @if (ach.badge) {
+                            <span class="ach-badge">{{ ach.badge }}</span>
+                        }
                     </div>
+                    <div class="ach-body">
+                        <h3>{{ ach.title }}</h3>
+                        <p>{{ ach.description }}</p>
+                    </div>
+                    <!-- Tech corner decorations -->
+                    <span class="corner-t-l"></span>
+                    <span class="corner-b-r"></span>
                 </div>
             }
         </div>

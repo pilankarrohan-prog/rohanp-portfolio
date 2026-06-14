@@ -15,6 +15,7 @@ export class Certifications implements OnInit, AfterViewInit, OnDestroy {
   
   readonly selectedCategory = signal<string>('All');
   readonly isRevealed = signal(false);
+  readonly activeLightboxUrl = signal<string | null>(null);
   
   private observer?: IntersectionObserver;
 
@@ -54,5 +55,15 @@ export class Certifications implements OnInit, AfterViewInit, OnDestroy {
 
   selectCategory(cat: string) {
     this.selectedCategory.set(cat);
+  }
+
+  openLightbox(url: string) {
+    this.activeLightboxUrl.set(url);
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeLightbox() {
+    this.activeLightboxUrl.set(null);
+    document.body.style.overflow = '';
   }
 }

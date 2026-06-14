@@ -2,14 +2,14 @@ import { Component, ElementRef, OnInit, AfterViewInit, OnDestroy, signal, inject
 import { PortfolioService } from '../../services/portfolio.service';
 
 @Component({
-  selector: 'app-achievements',
-  templateUrl: './achievements.html',
-  styleUrl: './achievements.scss',
+  selector: 'app-learning',
+  templateUrl: './learning.html',
+  styleUrl: './learning.scss',
   standalone: true
 })
-export class Achievements implements OnInit, AfterViewInit, OnDestroy {
+export class Learning implements OnInit, AfterViewInit, OnDestroy {
   private portfolioService = inject(PortfolioService);
-  readonly achievements = this.portfolioService.achievements;
+  readonly learningList = this.portfolioService.currentlyLearning;
   readonly isRevealed = signal(false);
   
   private observer?: IntersectionObserver;
@@ -25,7 +25,7 @@ export class Achievements implements OnInit, AfterViewInit, OnDestroy {
         this.observer?.disconnect();
       }
     }, {
-      threshold: 0.1
+      threshold: 0.15
     });
 
     this.observer.observe(this.elRef.nativeElement);

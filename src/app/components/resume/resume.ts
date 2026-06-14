@@ -1,22 +1,25 @@
 import { Component, ElementRef, OnInit, AfterViewInit, OnDestroy, signal, inject } from '@angular/core';
-import { PortfolioService } from '../../services/portfolio.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-achievements',
-  templateUrl: './achievements.html',
-  styleUrl: './achievements.scss',
+  selector: 'app-resume',
+  templateUrl: './resume.html',
+  styleUrl: './resume.scss',
   standalone: true
 })
-export class Achievements implements OnInit, AfterViewInit, OnDestroy {
-  private portfolioService = inject(PortfolioService);
-  readonly achievements = this.portfolioService.achievements;
+export class Resume implements OnInit, AfterViewInit, OnDestroy {
+  private sanitizer = inject(DomSanitizer);
   readonly isRevealed = signal(false);
+  readonly showModal = signal(false);
+  readonly resumeUrl = signal<SafeResourceUrl>('');
   
   private observer?: IntersectionObserver;
 
   constructor(private elRef: ElementRef) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.resumeUrl.set(this.sanitizer.bypassSecurityTrustResourceUrl('Rohan_Pilankar_Resume.pdf'));
+  }
 
   ngAfterViewInit() {
     this.observer = new IntersectionObserver(([entry]) => {
@@ -25,7 +28,7 @@ export class Achievements implements OnInit, AfterViewInit, OnDestroy {
         this.observer?.disconnect();
       }
     }, {
-      threshold: 0.1
+      threshold: 0.15
     });
 
     this.observer.observe(this.elRef.nativeElement);
@@ -33,6 +36,16 @@ export class Achievements implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     this.observer?.disconnect();
+  }
+
+  openResumeModal() {
+    this.showModal.set(true);
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeResumeModal() {
+    this.showModal.set(false);
+    document.body.style.overflow = '';
   }
 
   onMouseMove(e: MouseEvent, card: HTMLElement) {

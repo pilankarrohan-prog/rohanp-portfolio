@@ -11,6 +11,7 @@ export class Projects implements OnInit, AfterViewInit, OnDestroy {
   private portfolioService = inject(PortfolioService);
   readonly projects = this.portfolioService.projects;
   readonly isRevealed = signal(false);
+  readonly activeScreenshotIdx = signal<number>(0);
   
   private observer?: IntersectionObserver;
 
@@ -35,11 +36,15 @@ export class Projects implements OnInit, AfterViewInit, OnDestroy {
     this.observer?.disconnect();
   }
 
-  onMouseMove(e: MouseEvent, card: HTMLDivElement) {
+  onMouseMove(e: MouseEvent, card: HTMLElement) {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     card.style.setProperty('--mouse-x', `${x}px`);
     card.style.setProperty('--mouse-y', `${y}px`);
+  }
+
+  selectScreenshot(idx: number) {
+    this.activeScreenshotIdx.set(idx);
   }
 }

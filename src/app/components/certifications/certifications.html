@@ -23,13 +23,13 @@
     <!-- Certifications Grid -->
     <div class="certs-grid">
         <div class="cert-card" *ngFor="let cert of filteredCertifications()">
-            <div class="cert-preview-container">
+            <div class="cert-preview-container" (click)="openLightbox(cert.previewUrl)">
                 <img [src]="cert.previewUrl" [alt]="cert.title" class="cert-preview-img" loading="lazy">
                 <div class="cert-preview-overlay">
-                    <a [href]="cert.pdfUrl" target="_blank" class="preview-btn">
+                    <span class="preview-btn">
                         <svg class="icon"><use href="#icon-play"/></svg>
                         Quick View
-                    </a>
+                    </span>
                 </div>
                 <span class="cert-tag">{{ cert.category }}</span>
             </div>
@@ -43,11 +43,13 @@
                 <div class="cert-footer">
                     <span class="cert-date">{{ cert.date }}</span>
                     <div class="cert-actions">
-                        <a [href]="cert.pdfUrl" target="_blank" class="action-btn view" title="View PDF">
-                            <svg class="icon"><use href="#icon-globe"/></svg>
-                        </a>
-                        <a [href]="cert.pdfUrl" [download]="cert.title + '.pdf'" class="action-btn download" title="Download PDF">
+                        <button (click)="openLightbox(cert.previewUrl)" class="btn btn-card-action view-btn" title="View Preview Image">
+                            <svg class="icon"><use href="#icon-play"/></svg>
+                            View
+                        </button>
+                        <a [href]="cert.pdfUrl" [download]="cert.title + '.pdf'" class="btn btn-card-action download-btn" title="Download Certificate PDF">
                             <svg class="icon"><use href="#icon-download"/></svg>
+                            PDF
                         </a>
                     </div>
                 </div>
@@ -57,6 +59,19 @@
             <span class="corner-t-r"></span>
             <span class="corner-b-l"></span>
             <span class="corner-b-r"></span>
+        </div>
+    </div>
+
+    <!-- Interactive Lightbox Modal -->
+    <div class="lightbox-overlay" *ngIf="activeLightboxUrl()" (click)="closeLightbox()">
+        <div class="lightbox-card" (click)="$event.stopPropagation()">
+            <div class="lightbox-header">
+                <span class="lightbox-title">// CREDENTIAL_SECURE_IMAGE</span>
+                <button class="lightbox-close" (click)="closeLightbox()">&times;</button>
+            </div>
+            <div class="lightbox-body">
+                <img [src]="activeLightboxUrl()" alt="Certificate High-Res Preview" class="lightbox-img">
+            </div>
         </div>
     </div>
 </section>

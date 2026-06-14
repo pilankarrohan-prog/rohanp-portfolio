@@ -1,0 +1,31 @@
+<section class="timeline-section scroll-reveal" id="timeline" [class.revealed]="isRevealed()">
+    <div class="container">
+        <div class="section-header">
+            <div class="cyber-subtitle">DEVELOPER PATHWAY</div>
+            <h2 class="section-title">Professional Journey</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="journey-timeline">
+            <div class="timeline-laser-line"></div>
+            
+            @for (item of journey(); track item.title; let idx = $index; let odd = $odd) {
+                <div class="timeline-node-wrapper" [class.left-node]="!odd" [class.right-node]="odd">
+                    <div class="timeline-node-dot">
+                        <svg class="icon node-icon"><use [attr.href]="'#' + item.icon"/></svg>
+                    </div>
+                    
+                    <div class="timeline-node-card glass-card hover-glow">
+                        <div class="card-glow"></div>
+                        <span class="timeline-year">{{ item.year }}</span>
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.description }}</p>
+                        <!-- Cyber corner decorations -->
+                        <span class="corner-t-l"></span>
+                        <span class="corner-b-r"></span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

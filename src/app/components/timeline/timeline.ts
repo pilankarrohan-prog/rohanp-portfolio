@@ -2,14 +2,14 @@ import { Component, ElementRef, OnInit, AfterViewInit, OnDestroy, signal, inject
 import { PortfolioService } from '../../services/portfolio.service';
 
 @Component({
-  selector: 'app-achievements',
-  templateUrl: './achievements.html',
-  styleUrl: './achievements.scss',
+  selector: 'app-timeline',
+  templateUrl: './timeline.html',
+  styleUrl: './timeline.scss',
   standalone: true
 })
-export class Achievements implements OnInit, AfterViewInit, OnDestroy {
+export class Timeline implements OnInit, AfterViewInit, OnDestroy {
   private portfolioService = inject(PortfolioService);
-  readonly achievements = this.portfolioService.achievements;
+  readonly journey = this.portfolioService.timeline;
   readonly isRevealed = signal(false);
   
   private observer?: IntersectionObserver;
@@ -33,13 +33,5 @@ export class Achievements implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     this.observer?.disconnect();
-  }
-
-  onMouseMove(e: MouseEvent, card: HTMLElement) {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    card.style.setProperty('--mouse-x', `${x}px`);
-    card.style.setProperty('--mouse-y', `${y}px`);
   }
 }

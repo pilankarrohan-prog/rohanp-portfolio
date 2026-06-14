@@ -1,44 +1,108 @@
 <section class="projects-section scroll-reveal" id="projects" [class.revealed]="isRevealed()">
     <div class="container">
         <div class="projects-header">
+            <div class="cyber-subtitle">FEATURED ENGINEERING WORK</div>
             <h2 class="section-title text-glitch" data-text="// DEPLOYED_PROJECTS">// DEPLOYED_PROJECTS</h2>
+            <div class="section-line"></div>
         </div>
         
-        <div class="projects-grid">
-            
+        <div class="project-showcase">
             @for (project of projects(); track project.title) {
-                <div class="project-card glass-card hover-glow" #projectCard (mousemove)="onMouseMove($event, projectCard)">
+                <div class="showcase-card glass-card hover-glow" #showcaseCard (mousemove)="onMouseMove($event, showcaseCard)">
                     <div class="card-glow"></div>
-                    <div class="project-image-wrapper">
-                        @if (project.isFeatured) {
-                            <div class="featured-badge">Featured Project</div>
-                        }
-                        <img [src]="project.imageUrl" [alt]="project.title + ' Screenshot'" class="project-img">
-                        <div class="project-overlay">
-                            <div class="tech-tags">
-                                @for (tag of project.tags; track tag) {
-                                    <span class="tag">{{ tag }}</span>
+                    
+                    <div class="showcase-layout">
+                        <!-- Left Column: Gallery -->
+                        <div class="gallery-column">
+                            <div class="featured-badge-container">
+                                <span class="featured-badge">Featured Project</span>
+                            </div>
+                            
+                            <div class="main-preview-container">
+                                @if (project.gallery && project.gallery.length > 0) {
+                                    <img [src]="project.gallery[activeScreenshotIdx()]" [alt]="project.title + ' Screenshot'" class="main-preview-img">
+                                } @else {
+                                    <img [src]="project.imageUrl" [alt]="project.title + ' Screenshot'" class="main-preview-img">
                                 }
                             </div>
+                            
+                            @if (project.gallery && project.gallery.length > 1) {
+                                <div class="thumbnails-container">
+                                    @for (thumb of project.gallery; track thumb; let idx = $index) {
+                                        <button class="thumb-btn" [class.active]="activeScreenshotIdx() === idx" (click)="selectScreenshot(idx)">
+                                            <img [src]="thumb" alt="Thumbnail">
+                                        </button>
+                                    }
+                                </div>
+                            }
                         </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>{{ project.title }}</h3>
-                        <p>{{ project.description }}</p>
-                        <div class="project-links">
-                            <a [href]="project.githubUrl" target="_blank" rel="noopener" class="btn btn-card-link">
-                                <svg class="icon link-icon"><use href="#icon-github"/></svg>
-                                Code
-                            </a>
-                            <a [href]="project.demoUrl" target="_blank" rel="noopener" class="btn btn-card-link live-demo-btn">
-                                <svg class="icon link-icon"><use href="#icon-play"/></svg>
-                                Live Demo
-                            </a>
+                        
+                        <!-- Right Column: Info details -->
+                        <div class="info-column">
+                            <div class="project-title-row">
+                                <h3>{{ project.title }}</h3>
+                                @if (project.timeline) {
+                                    <span class="project-timeline-tag">{{ project.timeline }}</span>
+                                }
+                            </div>
+                            
+                            <p class="project-desc">{{ project.description }}</p>
+                            
+                            @if (project.problemStatement) {
+                                <div class="problem-box">
+                                    <span class="problem-label">// PROBLEM_STATEMENT</span>
+                                    <p>{{ project.problemStatement }}</p>
+                                </div>
+                            }
+                            
+                            @if (project.features && project.features.length > 0) {
+                                <div class="features-box">
+                                    <span class="section-label">// KEY_FEATURES</span>
+                                    <ul class="features-list">
+                                        @for (feat of project.features; track feat) {
+                                            <li>
+                                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                                </svg>
+                                                <span>{{ feat }}</span>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                            
+                            @if (project.techStackGrouped && project.techStackGrouped.length > 0) {
+                                <div class="tech-stack-box">
+                                    <span class="section-label">// TECHNOLOGY_STACK</span>
+                                    <div class="tech-groups">
+                                        @for (group of project.techStackGrouped; track group.category) {
+                                            <div class="tech-group">
+                                                <span class="group-title">{{ group.category }}:</span>
+                                                <div class="tech-tags-group">
+                                                    @for (item of group.items; track item) {
+                                                        <span class="tag">{{ item }}</span>
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            
+                            <div class="project-links">
+                                <a [href]="project.githubUrl" target="_blank" rel="noopener" class="btn btn-secondary">
+                                    <svg class="icon link-icon"><use href="#icon-github"/></svg>
+                                    GitHub Repository
+                                </a>
+                                <a [href]="project.demoUrl" target="_blank" rel="noopener" class="btn btn-primary live-demo-btn">
+                                    <svg class="icon link-icon"><use href="#icon-play"/></svg>
+                                    Live Demo
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             }
-
         </div>
     </div>
 </section>

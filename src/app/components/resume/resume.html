@@ -1,0 +1,64 @@
+<section class="resume-section scroll-reveal" id="resume" [class.revealed]="isRevealed()">
+    <div class="container">
+        <div class="section-header">
+            <div class="cyber-subtitle">VERIFIED DOSSIER</div>
+            <h2 class="section-title">Resume Hub</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="resume-card glass-card hover-glow" #resumeCard (mousemove)="onMouseMove($event, resumeCard)">
+            <div class="card-glow"></div>
+            <div class="resume-content">
+                <div class="resume-text-side">
+                    <h3>Professional CV &amp; Credentials</h3>
+                    <p>
+                        Access full academic details, technical skill architectures, course projects, and community volunteer histories. Optimized for automated parser compatibility and recruiter reviews.
+                    </p>
+                </div>
+                <div class="resume-actions-side">
+                    <button class="btn btn-primary" (click)="openResumeModal()">
+                        <svg class="icon btn-icon"><use href="#icon-play"/></svg>
+                        View Resume
+                    </button>
+                    <a href="Rohan_Pilankar_Resume.pdf" class="btn btn-secondary" download="Rohan_Pilankar_Resume.pdf">
+                        <svg class="icon btn-icon"><use href="#icon-download"/></svg>
+                        Download PDF
+                    </a>
+                </div>
+            </div>
+            <!-- Tech corner decorations -->
+            <span class="corner-t-l"></span>
+            <span class="corner-t-r"></span>
+            <span class="corner-b-l"></span>
+            <span class="corner-b-r"></span>
+        </div>
+    </div>
+</section>
+
+<!-- Resume Preview Modal -->
+<div class="resume-modal-overlay" [class.open]="showModal()" (click)="closeResumeModal()">
+    <div class="resume-modal-card glass-card" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+            <span class="modal-title">// CREDENTIAL_PREVIEW // Rohan_Pilankar_Resume.pdf</span>
+            <div class="modal-actions-header">
+                <a href="Rohan_Pilankar_Resume.pdf" class="btn-icon-link" download="Rohan_Pilankar_Resume.pdf" title="Download PDF">
+                    <svg class="icon"><use href="#icon-download"/></svg>
+                </a>
+                <button class="modal-close" (click)="closeResumeModal()">&times;</button>
+            </div>
+        </div>
+        <div class="modal-body">
+            <!-- Fallback text for mobile or non-supporting browsers -->
+            <iframe [src]="resumeUrl()" class="resume-iframe">
+                <p>Your browser does not support PDF embedding. <a href="Rohan_Pilankar_Resume.pdf" target="_blank">Click here to view PDF</a></p>
+            </iframe>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" (click)="closeResumeModal()">Close Preview</button>
+            <a href="Rohan_Pilankar_Resume.pdf" class="btn btn-primary" download="Rohan_Pilankar_Resume.pdf">
+                <svg class="icon btn-icon"><use href="#icon-download"/></svg>
+                Download Resume
+            </a>
+        </div>
+    </div>
+</div>

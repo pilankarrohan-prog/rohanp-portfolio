@@ -1,0 +1,35 @@
+<section class="learning-section scroll-reveal" id="learning" [class.revealed]="isRevealed()">
+    <div class="container">
+        <div class="section-header">
+            <div class="cyber-subtitle">CONTINUOUS INTEGRATION</div>
+            <h2 class="section-title">Currently Learning</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="learning-grid">
+            @for (goal of learningList(); track goal) {
+                <div class="learning-card glass-card hover-glow" #learningCard (mousemove)="onMouseMove($event, learningCard)">
+                    <div class="card-glow"></div>
+                    <div class="learning-header">
+                        <span class="pulse-node"></span>
+                        <span class="learning-status">ACQUIRING_DATA</span>
+                    </div>
+                    <div class="learning-body">
+                        <h3>{{ goal }}</h3>
+                        <p class="learning-desc">
+                            Integrating advanced practices, reading documentation, and building micro-services to reinforce technical expertise.
+                        </p>
+                    </div>
+                    <div class="learning-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <!-- Tech corner decorations -->
+                    <span class="corner-t-l"></span>
+                    <span class="corner-b-r"></span>
+                </div>
+            }
+        </div>
+    </div>
+</section>
