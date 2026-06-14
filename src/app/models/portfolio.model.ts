@@ -47,7 +47,7 @@ export interface TimelineItem {
 
 export interface Education {
   degree: string;
-  specialization: string;
+  status: string;
   institution: string;
   desc: string;
   highlights: { title: string; val: string }[];

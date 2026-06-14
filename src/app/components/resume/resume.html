@@ -6,30 +6,185 @@
             <div class="section-line"></div>
         </div>
 
-        <div class="resume-card glass-card hover-glow" #resumeCard (mousemove)="onMouseMove($event, resumeCard)">
-            <div class="card-glow"></div>
-            <div class="resume-content">
-                <div class="resume-text-side">
-                    <h3>Professional CV &amp; Credentials</h3>
-                    <p>
-                        Access full academic details, technical skill architectures, course projects, and community volunteer histories. Optimized for automated parser compatibility and recruiter reviews.
-                    </p>
+        <div class="resume-card-layout">
+            <!-- Left Side: Interactive Glass Document Card -->
+            <div class="resume-preview-card glass-card hover-glow" #resumeCard (mousemove)="onMouseMove($event, resumeCard)">
+                <div class="card-glow"></div>
+                <div class="resume-header-row">
+                    <div class="doc-icon-wrapper">
+                        <svg class="doc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                        </svg>
+                    </div>
+                    <div class="doc-title-wrapper">
+                        <h3>Rohan Pilankar – Resume</h3>
+                        <span class="doc-updated">Last Updated: Automatically generated from resume metadata</span>
+                    </div>
                 </div>
-                <div class="resume-actions-side">
-                    <button class="btn btn-primary" (click)="openResumeModal()">
-                        <svg class="icon btn-icon"><use href="#icon-play"/></svg>
-                        View Resume
-                    </button>
-                    <a href="Rohan_Pilankar_Resume.pdf" class="btn btn-secondary" download="Rohan_Pilankar_Resume.pdf">
-                        <svg class="icon btn-icon"><use href="#icon-download"/></svg>
-                        Download PDF
-                    </a>
+
+                <div class="doc-divider"></div>
+
+                <div class="doc-summary-box">
+                    <span class="summary-label">// QUICK_SUMMARY</span>
+                    <ul class="summary-list">
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span class="summary-text">B.Tech AI &amp; Data Science Student</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span class="summary-text">Angular Developer</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span class="summary-text">Java Developer</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span class="summary-text">Firebase Developer</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span class="summary-text">Problem Solver</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="doc-divider"></div>
+
+                <div class="doc-meta-box">
+                    <div class="meta-row">
+                        <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span class="meta-text">Location: Pune, Maharashtra, India</span>
+                    </div>
+                    <div class="meta-row">
+                        <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <a href="mailto:pilankarrohan@gmail.com" class="meta-link">Email: pilankarrohan@gmail.com</a>
+                    </div>
+                    <div class="meta-row text-glow-blue">
+                        <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 8 12 12 16 14"></polyline>
+                        </svg>
+                        <span class="meta-text">Open To: Internships &amp; Opportunities</span>
+                    </div>
+                </div>
+
+                <!-- Tech corner decorations -->
+                <span class="corner-t-l"></span>
+                <span class="corner-b-r"></span>
+            </div>
+
+            <!-- Right Side: Call to Actions & Details -->
+            <div class="resume-details-card glass-card hover-glow" #detailsCard (mousemove)="onMouseMove($event, detailsCard)">
+                <div class="card-glow"></div>
+                <div class="details-content">
+                    <h3>Access Verified Dossier</h3>
+                    <p>
+                        Review my academic credentials, course architectures, and software engineering capabilities. View in a high-fidelity inline modal or download a local copy of my resume.
+                    </p>
+                    <div class="resume-actions">
+                        <button class="btn btn-primary" (click)="openResumeModal()">
+                            <svg class="icon btn-icon"><use href="#icon-play"/></svg>
+                            View Resume
+                        </button>
+                        <a href="Rohan_Pilankar_Resume.pdf" class="btn btn-secondary" download="Rohan_Pilankar_Resume.pdf">
+                            <svg class="icon btn-icon"><use href="#icon-download"/></svg>
+                            Download PDF
+                        </a>
+                    </div>
+                </div>
+                <!-- Tech corner decorations -->
+                <span class="corner-t-r"></span>
+                <span class="corner-b-l"></span>
+            </div>
+        </div>
+
+        <!-- Featured Skills Section (Stat row alternative) -->
+        <div class="resume-featured-skills">
+            <span class="skills-row-label">// FEATURED_CAPABILITIES</span>
+            <div class="featured-skills-grid">
+                <div class="skill-stat-card glass-card hover-glow" #sCard1 (mousemove)="onMouseMove($event, sCard1)">
+                    <div class="card-glow"></div>
+                    <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <div class="skill-stat-info">
+                        <h4>Angular</h4>
+                        <span>Web Apps</span>
+                    </div>
+                </div>
+                <div class="skill-stat-card glass-card hover-glow" #sCard2 (mousemove)="onMouseMove($event, sCard2)">
+                    <div class="card-glow"></div>
+                    <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <div class="skill-stat-info">
+                        <h4>Java</h4>
+                        <span>Core OOP</span>
+                    </div>
+                </div>
+                <div class="skill-stat-card glass-card hover-glow" #sCard3 (mousemove)="onMouseMove($event, sCard3)">
+                    <div class="card-glow"></div>
+                    <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <div class="skill-stat-info">
+                        <h4>Firebase</h4>
+                        <span>Backend/Auth</span>
+                    </div>
+                </div>
+                <div class="skill-stat-card glass-card hover-glow" #sCard4 (mousemove)="onMouseMove($event, sCard4)">
+                    <div class="card-glow"></div>
+                    <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <div class="skill-stat-info">
+                        <h4>Python</h4>
+                        <span>Scripting/ML</span>
+                    </div>
+                </div>
+                <div class="skill-stat-card glass-card hover-glow" #sCard5 (mousemove)="onMouseMove($event, sCard5)">
+                    <div class="card-glow"></div>
+                    <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <div class="skill-stat-info">
+                        <h4>SQL</h4>
+                        <span>Querying/DBs</span>
+                    </div>
+                </div>
+                <div class="skill-stat-card glass-card hover-glow" #sCard6 (mousemove)="onMouseMove($event, sCard6)">
+                    <div class="card-glow"></div>
+                    <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <div class="skill-stat-info">
+                        <h4>Linux</h4>
+                        <span>Terminal/OS</span>
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Career Objective Section -->
+        <div class="resume-objective-card glass-card hover-glow" #objCard (mousemove)="onMouseMove($event, objCard)">
+            <div class="card-glow"></div>
+            <div class="objective-header">
+                <span class="objective-title-label">// CAREER_OBJECTIVE</span>
+            </div>
+            <p class="objective-text">
+                "Seeking opportunities to apply skills in software development, web technologies, and AI-driven solutions while contributing to impactful real-world projects."
+            </p>
             <!-- Tech corner decorations -->
             <span class="corner-t-l"></span>
-            <span class="corner-t-r"></span>
-            <span class="corner-b-l"></span>
             <span class="corner-b-r"></span>
         </div>
     </div>
@@ -48,7 +203,6 @@
             </div>
         </div>
         <div class="modal-body">
-            <!-- Fallback text for mobile or non-supporting browsers -->
             <iframe [src]="resumeUrl()" class="resume-iframe">
                 <p>Your browser does not support PDF embedding. <a href="Rohan_Pilankar_Resume.pdf" target="_blank">Click here to view PDF</a></p>
             </iframe>

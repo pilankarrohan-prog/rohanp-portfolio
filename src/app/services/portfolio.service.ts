@@ -15,7 +15,7 @@ export class PortfolioService {
       'Software Engineering Specialist',
       'Full-Stack Developer'
     ],
-    bio: 'AI & Data Science student passionate about software development, web technologies, data analytics, and machine learning. Experienced in Java, C++, Python, Angular, Firebase, Linux, and modern web development. Actively building projects and exploring AI-driven solutions.',
+    bio: 'Passionate B.Tech Artificial Intelligence & Data Science student focused on software development, web technologies, Angular applications, Firebase solutions, and emerging AI technologies. Actively building real-world projects and continuously improving problem-solving skills.',
     email: 'pilankarrohan@gmail.com',
     phone: '+91 8208545590',
     location: 'Pune, Maharashtra, India',
@@ -170,8 +170,8 @@ export class PortfolioService {
     },
     {
       year: '2025',
-      title: 'AI & Data Science Engineering',
-      description: 'Enrolled in specialized AI & DS engineering curricula, studying Machine Learning modeling, predictive statistical analysis, and database profiling.',
+      title: 'B.Tech AI & Data Science',
+      description: 'Enrolled in specialized B.Tech AI & DS coursework covering Data Structures & Algorithms, Web Development, Angular Development, Database Management Systems, and Artificial Intelligence Fundamentals.',
       icon: 'icon-brain'
     },
     {
@@ -200,8 +200,8 @@ export class PortfolioService {
 
   // Education details
   private readonly _education = signal<Education>({
-    degree: 'Bachelor of Engineering',
-    specialization: 'Artificial Intelligence & Data Science Engineering',
+    degree: 'B.Tech – Artificial Intelligence & Data Science',
+    status: 'Currently Pursuing',
     institution: "Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering and Technology (VPKBIET), Baramati",
     desc: 'Rigorous curriculum covering Machine Learning Algorithms, Deep Learning, Statistical Analytics, Advanced Algorithms in Java and C++, DBMS structures, and Web Architectures. Maintained top-tier academic grades.',
     highlights: [

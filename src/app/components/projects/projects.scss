@@ -179,6 +179,17 @@
     line-height: 1.6;
 }
 
+.project-impact {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    text-shadow: 0 0 5px rgba(0, 242, 254, 0.3);
+    border-left: 2px solid var(--accent-blue);
+    padding-left: 12px;
+    font-style: italic;
+    line-height: 1.5;
+}
+
 .section-label {
     display: block;
     font-family: var(--font-heading);
