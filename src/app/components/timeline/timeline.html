@@ -1,8 +1,8 @@
 <section class="timeline-section scroll-reveal" id="timeline" [class.revealed]="isRevealed()">
     <div class="container">
         <div class="section-header">
-            <div class="cyber-subtitle">DEVELOPER PATHWAY</div>
-            <h2 class="section-title">Professional Journey</h2>
+            <div class="cyber-subtitle">ACADEMIC PATHWAY</div>
+            <h2 class="section-title">Academic & Technical Journey</h2>
             <div class="section-line"></div>
         </div>
 
@@ -10,16 +10,46 @@
             <div class="timeline-laser-line"></div>
             
             @for (item of journey(); track item.title; let idx = $index; let odd = $odd) {
-                <div class="timeline-node-wrapper" [class.left-node]="!odd" [class.right-node]="odd">
+                <div class="timeline-node-wrapper" 
+                     [class.left-node]="!odd" 
+                     [class.right-node]="odd"
+                     [class.milestone-node]="item.isMilestone">
                     <div class="timeline-node-dot">
                         <svg class="icon node-icon"><use [attr.href]="'#' + item.icon"/></svg>
                     </div>
                     
-                    <div class="timeline-node-card glass-card hover-glow">
+                    <div class="timeline-node-card glass-card hover-glow" [class.milestone-card]="item.isMilestone">
                         <div class="card-glow"></div>
                         <span class="timeline-year">{{ item.year }}</span>
                         <h3>{{ item.title }}</h3>
-                        <p>{{ item.description }}</p>
+                        <p class="timeline-desc">{{ item.description }}</p>
+
+                        @if (item.milestoneBadges && item.milestoneBadges.length > 0) {
+                            <div class="milestone-badges">
+                                @for (badge of item.milestoneBadges; track badge) {
+                                    <span class="milestone-badge"
+                                          [class.badge-labourlink]="badge.includes('LabourLink')"
+                                          [class.badge-techfest]="badge.includes('Techfest')">
+                                        <svg class="icon badge-icon">
+                                            <use [attr.href]="badge.includes('LabourLink') ? '#icon-globe' : '#icon-award'"/>
+                                        </svg>
+                                        {{ badge }}
+                                    </span>
+                                }
+                            </div>
+                        }
+
+                        @if (item.bullets && item.bullets.length > 0) {
+                            <ul class="timeline-bullets">
+                                @for (bullet of item.bullets; track bullet) {
+                                    <li>
+                                        <span class="bullet-marker"></span>
+                                        <span class="bullet-content">{{ bullet }}</span>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        
                         <!-- Cyber corner decorations -->
                         <span class="corner-t-l"></span>
                         <span class="corner-b-r"></span>

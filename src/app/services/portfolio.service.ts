@@ -145,46 +145,66 @@ export class PortfolioService {
   // Journey Timeline items
   private readonly _timeline = signal<TimelineItem[]>([
     {
-      year: '2022',
-      title: 'Started Programming',
-      description: 'Began writing code, learning algorithmic logic, and building foundational problem-solving frameworks.',
-      icon: 'icon-code'
-    },
-    {
-      year: '2023',
-      title: 'Learned Java & C++',
-      description: 'Mastered core Object-Oriented Programming principles, memory layouts, standard template libraries, and algorithmic performance structures.',
-      icon: 'icon-terminal'
-    },
-    {
       year: '2024',
-      title: 'Web Development Journey',
-      description: 'Explored core web technologies, responsive styles, state management, and modern DOM architectures.',
-      icon: 'icon-globe'
-    },
-    {
-      year: '2024',
-      title: 'Angular Development',
-      description: 'Adopted Angular single-page architectures, TypeScript-based layouts, responsive components, and reactive signal workflows.',
-      icon: 'icon-code'
+      title: 'Started B.Tech in Artificial Intelligence & Data Science',
+      description: 'Began B.Tech engineering journey focusing on computer science, programming logic, and core mathematics.',
+      icon: 'icon-edu',
+      bullets: [
+        'Began engineering journey',
+        'Learned programming fundamentals',
+        'Started Java and C++ development'
+      ]
     },
     {
       year: '2025',
-      title: 'B.Tech AI & Data Science',
-      description: 'Enrolled in specialized B.Tech AI & DS coursework covering Data Structures & Algorithms, Web Development, Angular Development, Database Management Systems, and Artificial Intelligence Fundamentals.',
-      icon: 'icon-brain'
-    },
-    {
-      year: '2025',
-      title: 'LabourLink Project',
-      description: 'Designed, built, and launched LabourLink, connecting workers and employers using Angular & Firebase.',
-      icon: 'icon-award'
+      title: 'Web Development & Projects',
+      description: 'Mastered frontend engineering and built real-world projects, including an impactful daily wage worker platform.',
+      icon: 'icon-globe',
+      isMilestone: true,
+      milestoneBadges: ['LabourLink Launch', 'Techfest IIT Bombay Ambassador'],
+      bullets: [
+        'Learned HTML, CSS, JavaScript',
+        'Started Angular development',
+        'Worked on real-world projects',
+        'Built LabourLink'
+      ]
     },
     {
       year: '2026',
-      title: 'Current Learning Goals',
-      description: 'Deepening skill matrices in advanced Angular services, machine learning models, database query tuning, and complex algorithm designs.',
-      icon: 'icon-edu'
+      title: 'AI & Data Science Growth',
+      description: 'Expanding capabilities into machine learning algorithms, data analytics, and cloud databases.',
+      icon: 'icon-brain',
+      bullets: [
+        'Machine Learning fundamentals',
+        'Data Analytics concepts',
+        'Firebase and full-stack development',
+        'Advanced Angular applications'
+      ]
+    },
+    {
+      year: '2027',
+      title: 'Industry Readiness',
+      description: 'Gaining industry-level preparation, engineering workflows, and system design expertise.',
+      icon: 'icon-terminal',
+      bullets: [
+        'Internship Experience',
+        'Industry Projects',
+        'Placement Preparation',
+        'Advanced Software Engineering'
+      ]
+    },
+    {
+      year: '2028',
+      title: 'B.Tech Graduation & Career Launch',
+      description: 'Completing B.Tech degree and launching a professional career in software and AI engineering.',
+      icon: 'icon-award',
+      bullets: [
+        'Final Year Project',
+        'B.Tech Graduation',
+        'Placement Opportunities',
+        'Professional Software Development Career',
+        'AI & Data Science Career Growth'
+      ]
     }
   ]);
 

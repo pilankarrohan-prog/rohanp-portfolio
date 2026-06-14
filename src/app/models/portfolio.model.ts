@@ -43,6 +43,9 @@ export interface TimelineItem {
   title: string;
   description: string;
   icon: string;
+  isMilestone?: boolean;
+  milestoneBadges?: string[];
+  bullets?: string[];
 }
 
 export interface Education {
