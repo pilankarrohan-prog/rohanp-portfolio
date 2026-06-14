@@ -1,0 +1,93 @@
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 40px;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple));
+        box-shadow: 0 0 10px var(--accent-blue-glow);
+
+        @media (max-width: 768px) {
+            left: 20px;
+        }
+    }
+}
+
+.timeline-item {
+    margin-bottom: 40px;
+    margin-left: 80px;
+    padding: 30px;
+    position: relative;
+
+    @media (max-width: 768px) {
+        margin-left: 40px;
+        padding: 20px;
+    }
+
+    &:hover {
+        .timeline-dot {
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 10px var(--accent-purple);
+        }
+    }
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -49px;
+    top: 36px;
+    width: 16px;
+    height: 16px;
+    background: var(--bg-primary);
+    border: 3px solid var(--accent-blue);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-blue);
+    z-index: 2;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+
+    @media (max-width: 768px) {
+        left: -29px;
+        top: 38px;
+    }
+}
+
+.timeline-date {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.milestone-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.milestone-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--accent-purple);
+}
+
+.timeline-content h3 {
+    font-family: var(--font-subheading);
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.timeline-content p {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}

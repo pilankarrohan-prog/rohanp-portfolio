@@ -1,0 +1,91 @@
+.edu-card {
+    padding: 40px;
+    margin-bottom: 0;
+}
+
+.edu-layout {
+    display: flex;
+    gap: 30px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+
+.edu-icon-side {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.edu-main-icon {
+    width: 45px;
+    height: 45px;
+    color: var(--accent-blue);
+    filter: drop-shadow(0 0 10px var(--accent-blue-glow));
+}
+
+.edu-details-side {
+    h3 {
+        font-family: var(--font-subheading);
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    h4 {
+        font-family: var(--font-heading);
+        font-size: 1rem;
+        color: var(--accent-purple);
+        margin-bottom: 6px;
+        font-weight: 500;
+    }
+}
+
+.edu-college {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+.edu-desc {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.edu-highlights {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-top: 20px;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.highlight-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.highlight-title {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.highlight-val {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+

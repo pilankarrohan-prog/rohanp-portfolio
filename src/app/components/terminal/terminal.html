@@ -1,0 +1,50 @@
+<section class="console-section scroll-reveal" id="terminal-section">
+    <div class="container">
+        <h2 class="section-title text-glitch" data-text="// INTERACTIVE_SHELL">// INTERACTIVE_SHELL</h2>
+        <div class="terminal-wrapper glass-card">
+            <div class="terminal-header">
+                <div class="window-buttons">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="terminal-title">rohan@cyber-node:~</div>
+            </div>
+            <div class="terminal-body" #terminalScreen>
+                <div class="terminal-line">Welcome to Rohan's Interactive Shell v2.6. Type <span class="text-blue">help</span> for a list of active commands.</div>
+                <div class="terminal-line">Handshake initialized at: <span class="text-purple">{{ currentDate() }}</span></div>
+                
+                <div class="terminal-output-container">
+                    @for (log of commandLogs(); track $index) {
+                        @if (log.isHtml) {
+                            <div class="terminal-line" [innerHTML]="log.text"></div>
+                        } @else {
+                            <div class="terminal-line">{{ log.text }}</div>
+                        }
+                    }
+                </div>
+                
+                <div class="terminal-input-line">
+                    <span class="terminal-prompt">rohan@cyber-node:~$</span>
+                    <input type="text" 
+                           class="terminal-input" 
+                           [(ngModel)]="cmdInput" 
+                           (keydown.enter)="onCommandSubmit()" 
+                           placeholder="Type a command..." 
+                           autocomplete="off" 
+                           spellcheck="false">
+                </div>
+            </div>
+            <div class="terminal-footer">
+                <span class="footer-hint">Try clicking these commands:</span>
+                <div class="terminal-hints">
+                    <button class="cmd-hint-btn" (click)="processCommand('about')">about</button>
+                    <button class="cmd-hint-btn" (click)="processCommand('skills')">skills</button>
+                    <button class="cmd-hint-btn" (click)="processCommand('projects')">projects</button>
+                    <button class="cmd-hint-btn" (click)="processCommand('achievements')">achievements</button>
+                    <button class="cmd-hint-btn" (click)="processCommand('clear')">clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

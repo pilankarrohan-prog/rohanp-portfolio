@@ -1,0 +1,62 @@
+<section class="certifications-section" id="certifications" [class.revealed]="isRevealed()">
+    <div class="glow-container">
+        <div class="certs-glow"></div>
+    </div>
+    
+    <div class="section-header">
+        <div class="cyber-subtitle">CREDENTIALS & TRAINING</div>
+        <h2 class="section-title">Verified Certifications</h2>
+        <div class="section-line"></div>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="filter-container">
+        <button 
+            *ngFor="let cat of getCategories()" 
+            class="filter-chip" 
+            [class.active]="selectedCategory() === cat"
+            (click)="selectCategory(cat)">
+            {{ cat }}
+        </button>
+    </div>
+
+    <!-- Certifications Grid -->
+    <div class="certs-grid">
+        <div class="cert-card" *ngFor="let cert of filteredCertifications()">
+            <div class="cert-preview-container">
+                <img [src]="cert.previewUrl" [alt]="cert.title" class="cert-preview-img" loading="lazy">
+                <div class="cert-preview-overlay">
+                    <a [href]="cert.pdfUrl" target="_blank" class="preview-btn">
+                        <svg class="icon"><use href="#icon-play"/></svg>
+                        Quick View
+                    </a>
+                </div>
+                <span class="cert-tag">{{ cert.category }}</span>
+            </div>
+
+            <div class="cert-info">
+                <h3 class="cert-title" [title]="cert.title">{{ cert.title }}</h3>
+                <p class="cert-issuer">
+                    <svg class="icon-small"><use href="#icon-edu"/></svg>
+                    {{ cert.issuer }}
+                </p>
+                <div class="cert-footer">
+                    <span class="cert-date">{{ cert.date }}</span>
+                    <div class="cert-actions">
+                        <a [href]="cert.pdfUrl" target="_blank" class="action-btn view" title="View PDF">
+                            <svg class="icon"><use href="#icon-globe"/></svg>
+                        </a>
+                        <a [href]="cert.pdfUrl" [download]="cert.title + '.pdf'" class="action-btn download" title="Download PDF">
+                            <svg class="icon"><use href="#icon-download"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Tech corner decorations -->
+            <span class="corner-t-l"></span>
+            <span class="corner-t-r"></span>
+            <span class="corner-b-l"></span>
+            <span class="corner-b-r"></span>
+        </div>
+    </div>
+</section>

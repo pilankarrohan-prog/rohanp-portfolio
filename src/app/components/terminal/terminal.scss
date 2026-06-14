@@ -1,0 +1,153 @@
+.terminal-wrapper {
+    margin-top: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.terminal-header {
+    background: rgba(15, 15, 30, 0.85);
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    position: relative;
+}
+
+.window-buttons {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    left: 18px;
+
+    .dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        display: inline-block;
+
+        &.red { background-color: #ff5f56; }
+        &.yellow { background-color: #ffbd2e; }
+        &.green { background-color: #27c93f; }
+    }
+}
+
+.terminal-title {
+    margin: 0 auto;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
+.terminal-body {
+    background: rgba(3, 3, 7, 0.95);
+    padding: 24px;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    height: 350px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+    }
+}
+
+.terminal-line {
+    color: var(--text-secondary);
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.terminal-prompt {
+    color: var(--accent-purple);
+    font-weight: 700;
+}
+
+.terminal-input {
+    background: transparent;
+    border: none;
+    color: var(--accent-blue);
+    flex-grow: 1;
+    font-size: 0.9rem;
+    text-shadow: 0 0 5px rgba(0, 242, 254, 0.4);
+    width: 100%;
+}
+
+.terminal-footer {
+    background: rgba(5, 5, 12, 0.7);
+    padding: 12px 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-hint {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+
+.terminal-hints {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.cmd-hint-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+
+    &:hover {
+        background: rgba(0, 242, 254, 0.08);
+        border-color: var(--accent-blue);
+        color: var(--accent-blue);
+    }
+}
+
+::ng-deep {
+    .terminal-table {
+        display: table;
+        width: 100%;
+        margin: 8px 0;
+        color: var(--text-dim);
+    }
+
+    .terminal-row {
+        display: table-row;
+    }
+
+    .terminal-cell {
+        display: table-cell;
+        padding: 4px 8px;
+
+        &.cmd-name {
+            width: 140px;
+            color: var(--accent-blue);
+        }
+    }
+}

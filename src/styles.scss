@@ -1,1 +1,331 @@
-/* You can add global styles to this file, and also import other style files */
+/* ==========================================================================
+   ANGULAR GLOBAL STYLES (styles.scss)
+   ========================================================================== */
+:root {
+    --bg-primary: #020205;
+    --bg-secondary: #070710;
+    --bg-tertiary: #0d0d1e;
+    
+    --accent-blue: #00f2fe;
+    --accent-blue-rgb: 0, 242, 254;
+    --accent-blue-glow: rgba(0, 242, 254, 0.25);
+    
+    --accent-purple: #b100ff;
+    --accent-purple-rgb: 177, 0, 255;
+    --accent-purple-glow: rgba(177, 0, 255, 0.25);
+    
+    --text-primary: #ffffff;
+    --text-secondary: #ccd6f6;
+    --text-dim: #8892b0;
+    
+    --font-heading: 'Orbitron', sans-serif;
+    --font-subheading: 'Rajdhani', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'Courier New', Courier, monospace;
+    
+    --glass-bg: rgba(10, 10, 18, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --glass-glow-blue: rgba(0, 242, 254, 0.1);
+    --glass-glow-purple: rgba(177, 0, 255, 0.1);
+    
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset overrides */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-blue) var(--bg-primary);
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+    background: #151525;
+    border-radius: 4px;
+    border: 2px solid var(--bg-primary);
+    
+    &:hover {
+        background: var(--accent-blue);
+        box-shadow: 0 0 10px var(--accent-blue);
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+button, input, textarea {
+    font-family: inherit;
+    outline: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 100%;
+}
+
+section {
+    padding: 100px 0;
+    position: relative;
+
+    @media (max-width: 768px) {
+        padding: 60px 0;
+    }
+}
+
+/* Typography elements */
+h1, h2, h3, h4 {
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+    color: var(--accent-blue);
+    font-family: var(--font-subheading);
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    @media (max-width: 768px) {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+}
+
+/* Glitch Heading text effects */
+.text-glitch {
+    position: relative;
+    cursor: default;
+
+    &::before, &::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-primary);
+    }
+
+    &::before {
+        left: 2px;
+        text-shadow: -1px 0 var(--accent-purple);
+        clip: rect(44px, 450px, 56px, 0);
+        animation: glitch-anim 5s infinite linear alternate-reverse;
+    }
+
+    &::after {
+        left: -2px;
+        text-shadow: -1px 0 var(--accent-blue);
+        clip: rect(85px, 450px, 140px, 0);
+        animation: glitch-anim2 5s infinite linear alternate-reverse;
+    }
+}
+
+/* Glass card systems */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+    z-index: 1;
+
+    &:hover {
+        border-color: rgba(0, 242, 254, 0.2);
+        box-shadow: 0 15px 45px rgba(0, 242, 254, 0.08);
+    }
+}
+
+.hover-glow::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        320px circle at var(--mouse-x, 0) var(--mouse-y, 0),
+        rgba(0, 242, 254, 0.12) 0%,
+        rgba(177, 0, 255, 0.04) 50%,
+        transparent 80%
+    );
+    z-index: -1;
+    pointer-events: none;
+    opacity: var(--proximity, 0);
+    transition: opacity 0.2s ease-out;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+    stroke: currentColor;
+    fill: none;
+    vertical-align: middle;
+}
+
+.text-blue { color: var(--accent-blue); }
+.text-purple { color: var(--accent-purple); }
+
+/* Custom button states */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-family: var(--font-subheading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, #1a9cff 100%);
+    color: #000;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.35);
+
+    &:hover {
+        box-shadow: 0 0 25px rgba(0, 242, 254, 0.6);
+        transform: translateY(-2px);
+    }
+}
+
+.btn-secondary {
+    background: rgba(20, 20, 35, 0.6);
+    color: var(--text-primary);
+    border: 1px solid var(--accent-purple);
+    box-shadow: 0 0 10px rgba(177, 0, 255, 0.15);
+
+    &:hover {
+        background: rgba(177, 0, 255, 0.15);
+        box-shadow: 0 0 20px rgba(177, 0, 255, 0.4);
+        transform: translateY(-2px);
+    }
+}
+
+.btn-nav-cta {
+    padding: 8px 20px;
+    font-size: 0.95rem;
+    background: transparent;
+    border: 1px solid var(--accent-blue);
+    color: var(--accent-blue);
+    box-shadow: 0 0 8px rgba(0, 242, 254, 0.1);
+
+    &:hover {
+        background: rgba(0, 242, 254, 0.15);
+        box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+    }
+}
+
+/* Scroll reveals */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &.revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
+.delay-5 { animation-delay: 1.0s; }
+
+/* Keyframe animations */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(2px, 9999px, 83px, 0); }
+    10% { clip: rect(62px, 9999px, 12px, 0); }
+    20% { clip: rect(34px, 9999px, 98px, 0); }
+    30% { clip: rect(9px, 9999px, 45px, 0); }
+    40% { clip: rect(78px, 9999px, 6px, 0); }
+    50% { clip: rect(15px, 9999px, 94px, 0); }
+    60% { clip: rect(56px, 9999px, 30px, 0); }
+    70% { clip: rect(89px, 9999px, 50px, 0); }
+    80% { clip: rect(25px, 9999px, 73px, 0); }
+    90% { clip: rect(7px, 9999px, 89px, 0); }
+    100% { clip: rect(48px, 9999px, 20px, 0); }
+}
+
+@keyframes glitch-anim2 {
+    0% { clip: rect(76px, 9999px, 5px, 0); }
+    10% { clip: rect(12px, 9999px, 90px, 0); }
+    20% { clip: rect(89px, 9999px, 45px, 0); }
+    30% { clip: rect(4px, 9999px, 67px, 0); }
+    40% { clip: rect(56px, 9999px, 3px, 0); }
+    50% { clip: rect(23px, 9999px, 89px, 0); }
+    60% { clip: rect(98px, 9999px, 12px, 0); }
+    70% { clip: rect(15px, 9999px, 78px, 0); }
+    80% { clip: rect(40px, 9999px, 54px, 0); }
+    90% { clip: rect(67px, 9999px, 23px, 0); }
+    100% { clip: rect(8px, 9999px, 90px, 0); }
+}
+
+/* ==========================================================================
+   CUSTOM INTERACTIVE CURSOR GLOBAL OVERRIDES
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine) {
+    html.custom-cursor-active {
+        &, & * {
+            cursor: none !important;
+        }
+    }
+}
+

@@ -1,0 +1,78 @@
+<section class="hero-section" id="home">
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+    
+    <div class="hero-content">
+        <!-- Photo on the Left -->
+        <div class="hero-avatar-side fade-in">
+            <div class="hero-avatar-container">
+                <div class="avatar-frame">
+                    <span class="corner-t-l"></span>
+                    <span class="corner-t-r"></span>
+                    <span class="corner-b-l"></span>
+                    <span class="corner-b-r"></span>
+                    <img src="rohan.jpg" alt="Rohan Pilankar" class="avatar-img">
+                    <div class="avatar-overlay"></div>
+                </div>
+                <div class="avatar-glow"></div>
+            </div>
+        </div>
+
+        <!-- Details on the Right -->
+        <div class="hero-details">
+            <div class="cyber-badge fade-in">
+                <span class="pulse-indicator"></span>
+                ACTIVE PORTFOLIO // PUNE, IN
+            </div>
+            
+            <h1 class="hero-name fade-in delay-1">{{ profile().name }}</h1>
+            
+            <h2 class="hero-title fade-in delay-2">
+                <span class="typing-text">{{ typingText() }}</span>
+                <span class="typing-cursor">|</span>
+            </h2>
+            
+            <p class="hero-subtitle fade-in delay-3">
+                {{ profile().role }} | Aspiring AI Engineer | Java Developer | C++ Programmer
+            </p>
+            
+            <div class="hero-ctas fade-in delay-4">
+                <a href="#projects" class="btn btn-primary hover-glow">
+                    <svg class="icon btn-icon"><use href="#icon-code"/></svg>
+                    Explore Projects
+                </a>
+                <a [href]="profile().github" target="_blank" rel="noopener" class="btn btn-secondary hover-glow">
+                    <svg class="icon btn-icon"><use href="#icon-github"/></svg>
+                    View GitHub
+                </a>
+                <a [href]="profile().linkedin" target="_blank" rel="noopener" class="btn btn-secondary hover-glow">
+                    <svg class="icon btn-icon"><use href="#icon-linkedin"/></svg>
+                    Connect on LinkedIn
+                </a>
+                <a href="Rohan_Pilankar_Resume.pdf" class="btn btn-secondary btn-resume hover-glow" id="resume-download-btn" download="Rohan_Pilankar_Resume.pdf">
+                    <svg class="icon btn-icon"><use href="#icon-download"/></svg>
+                    Resume
+                </a>
+            </div>
+
+            <div class="hero-social-links fade-in delay-5">
+                <a [href]="profile().github" target="_blank" rel="noopener" class="social-icon-link hover-glow" title="GitHub Node">
+                    <svg class="icon"><use href="#icon-github"/></svg>
+                </a>
+                <a [href]="profile().linkedin" target="_blank" rel="noopener" class="social-icon-link hover-glow" title="LinkedIn Node">
+                    <svg class="icon"><use href="#icon-linkedin"/></svg>
+                </a>
+                <a [href]="'mailto:' + profile().email" class="social-icon-link hover-glow" title="Secure Mail">
+                    <svg class="icon"><use href="#icon-mail"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <a href="#about" class="scroll-indicator fade-in delay-5">
+        <div class="mouse-icon">
+            <span class="wheel"></span>
+        </div>
+        <span class="scroll-text">EXPLORE PORTFOLIO</span>
+    </a>
+</section>

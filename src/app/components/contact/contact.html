@@ -1,0 +1,109 @@
+<section class="contact-section scroll-reveal" id="contact" [class.revealed]="isRevealed()">
+    <div class="container">
+        <h2 class="section-title text-glitch" data-text="// ESTABLISH_LINK">// ESTABLISH_LINK</h2>
+        
+        <div class="contact-grid">
+            
+            <!-- Info cards side -->
+            <div class="contact-info-cards">
+                
+                <div class="info-card glass-card hover-glow email-card-wrapper">
+                    <div class="card-glow"></div>
+                    <div class="email-card-content" (click)="triggerMail($event)">
+                        <svg class="icon contact-icon text-blue"><use href="#icon-mail"/></svg>
+                        <div class="info-details">
+                            <span class="info-label">Secure Mail Link</span>
+                            <span class="info-value">{{ profile().email }}</span>
+                        </div>
+                    </div>
+                    <button class="copy-btn hover-glow" (click)="copyEmail($event)" title="Copy Email">
+                        <span class="copy-tooltip" [class.show]="copied()">Copied!</span>
+                        <svg class="icon copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <a [href]="'tel:' + profile().phone" class="info-card glass-card hover-glow">
+                    <div class="card-glow"></div>
+                    <svg class="icon contact-icon text-purple"><use href="#icon-phone"/></svg>
+                    <div class="info-details">
+                        <span class="info-label">Comms Line</span>
+                        <span class="info-value">{{ profile().phone }}</span>
+                    </div>
+                </a>
+
+                <div class="info-card-group">
+                    <a [href]="profile().github" target="_blank" rel="noopener" class="info-card half-card glass-card hover-glow">
+                        <div class="card-glow"></div>
+                        <svg class="icon contact-icon"><use href="#icon-github"/></svg>
+                        <span class="info-label">GitHub Node</span>
+                    </a>
+                    <a [href]="profile().linkedin" target="_blank" rel="noopener" class="info-card half-card glass-card hover-glow">
+                        <div class="card-glow"></div>
+                        <svg class="icon contact-icon"><use href="#icon-linkedin"/></svg>
+                        <span class="info-label">LinkedIn Node</span>
+                    </a>
+                </div>
+
+                <div class="info-card glass-card location-card hover-glow">
+                    <div class="card-glow"></div>
+                    <svg class="icon contact-icon text-blue"><use href="#icon-map-pin"/></svg>
+                    <div class="info-details">
+                        <span class="info-label">System Coordinates</span>
+                        <span class="info-value">{{ profile().location }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form side -->
+            <div class="contact-form-wrapper glass-card hover-glow">
+                <div class="card-glow"></div>
+                <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+                    <div class="form-group">
+                        <label for="name" class="form-label">IDENTITY / NAME</label>
+                        <input type="text" id="name" formControlName="name" class="form-input" [class.invalid]="isFieldInvalid('name')" placeholder="Type your identity...">
+                        <span class="error-msg">Name credential required.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">RETURN PROTOCOL / EMAIL</label>
+                        <input type="email" id="email" formControlName="email" class="form-input" [class.invalid]="isFieldInvalid('email')" placeholder="you@domain.com">
+                        <span class="error-msg">Enter a valid email pathway.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="form-label">TRANSMISSION HEADER / SUBJECT</label>
+                        <input type="text" id="subject" formControlName="subject" class="form-input" [class.invalid]="isFieldInvalid('subject')" placeholder="Subject of query...">
+                        <span class="error-msg">Subject header required.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">PACKET PAYLOAD / MESSAGE</label>
+                        <textarea id="message" formControlName="message" class="form-input" [class.invalid]="isFieldInvalid('message')" rows="5" placeholder="Encrypt message payload..."></textarea>
+                        <span class="error-msg">Packet payload cannot be empty.</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <svg class="icon btn-icon"><use href="#icon-mail"/></svg>
+                        Transmit Data Packet
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Holographic Dialog Modal (Form feedback) -->
+<div class="dialog-overlay" [class.open]="showModal()" (click)="closeModal()">
+    <div class="dialog-card glass-card" (click)="$event.stopPropagation()">
+        <div class="dialog-header">
+            <span class="dialog-title">// TRANSMISSION COMPLETE</span>
+            <button class="dialog-close" (click)="closeModal()">&times;</button>
+        </div>
+        <div class="dialog-body">
+            <p>Data packets successfully routed through secure networks. Handshake accepted. Rohan will contact you shortly.</p>
+        </div>
+        <div class="dialog-footer">
+            <button class="btn btn-primary" (click)="closeModal()">OK</button>
+        </div>
+    </div>
+</div>

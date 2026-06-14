@@ -1,0 +1,16 @@
+<footer class="footer">
+    <div class="container footer-content">
+        <p class="copyright">&copy; 2026 Rohan Pilankar. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a [href]="profile().github" target="_blank" rel="noopener" aria-label="GitHub" class="hover-glow">
+                <svg class="icon footer-icon"><use href="#icon-github"/></svg>
+            </a>
+            <a [href]="profile().linkedin" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover-glow">
+                <svg class="icon footer-icon"><use href="#icon-linkedin"/></svg>
+            </a>
+            <a [href]="'mailto:' + profile().email" aria-label="Email" class="hover-glow">
+                <svg class="icon footer-icon"><use href="#icon-mail"/></svg>
+            </a>
+        </div>
+    </div>
+</footer>

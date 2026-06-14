@@ -1,0 +1,28 @@
+<header class="header" [class.scrolled]="isScrolled()">
+    <div class="nav-container">
+        <a href="#" class="logo" (click)="closeMenu()">
+            <span class="logo-glow"></span>
+            ROHAN<span class="logo-dot">.AI</span>
+        </a>
+        
+        <nav class="nav-links" [class.open]="isOpen()">
+            <a href="#about" class="nav-item" (click)="closeMenu()">About</a>
+            <a href="#skills" class="nav-item" (click)="closeMenu()">Skills</a>
+            <a href="#projects" class="nav-item" (click)="closeMenu()">Projects</a>
+            <a href="#terminal-section" class="nav-item" (click)="closeMenu()">Console</a>
+            <a href="#achievements" class="nav-item" (click)="closeMenu()">Awards</a>
+            <a href="#education" class="nav-item" (click)="closeMenu()">Education</a>
+            <a href="#certifications" class="nav-item" (click)="closeMenu()">Certifications</a>
+            <a href="#contact" class="nav-item" (click)="closeMenu()">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="#contact" class="btn btn-nav-cta" (click)="closeMenu()">Hire Me</a>
+            <button class="mobile-toggle" (click)="toggleMenu()" [class.open]="isOpen()" aria-label="Toggle menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </div>
+</header>

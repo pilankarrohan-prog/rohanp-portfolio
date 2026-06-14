@@ -1,0 +1,32 @@
+<section class="education-section scroll-reveal" id="education" [class.revealed]="isRevealed()">
+    <div class="container">
+        <h2 class="section-title text-glitch" data-text="// ACADEMIC_REGISTRY">// ACADEMIC_REGISTRY</h2>
+        
+        <div class="edu-card glass-card hover-glow">
+            <div class="card-glow"></div>
+            <div class="edu-layout">
+                <div class="edu-icon-side">
+                    <svg class="icon edu-main-icon"><use href="#icon-edu"/></svg>
+                </div>
+                <div class="edu-details-side">
+                    <h3>{{ education().degree }}</h3>
+                    <h4>{{ education().specialization }}</h4>
+                    <p class="edu-college">{{ education().institution }}</p>
+                    <p class="edu-desc">{{ education().desc }}</p>
+                    
+                    <div class="edu-highlights">
+                        @for (highlight of education().highlights; track highlight.title) {
+                            <div class="highlight-item">
+                                <span class="highlight-title">{{ highlight.title }}</span>
+                                <span class="highlight-val">{{ highlight.val }}</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</section>

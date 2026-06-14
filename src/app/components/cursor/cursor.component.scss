@@ -1,0 +1,118 @@
+.custom-cursor-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999999;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.active {
+    opacity: 1;
+  }
+
+  &.touch-device {
+    display: none !important;
+  }
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-blue);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1000000;
+  box-shadow: 
+    0 0 8px var(--accent-blue), 
+    0 0 16px var(--accent-blue-glow);
+  
+  /* GPU acceleration */
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+  
+  transition: 
+    width 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+    height 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+    border-radius 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* Hover color change */
+  .hovering & {
+    background-color: var(--accent-purple);
+    box-shadow: 
+      0 0 10px var(--accent-purple), 
+      0 0 20px var(--accent-purple-glow);
+  }
+}
+
+/* Morph dot into thin precise insertion bar when hovering text headers */
+.text-hover {
+  .cursor-dot {
+    width: 2px !important;
+    height: 18px !important;
+    border-radius: 1px !important;
+    background-color: #ffffff !important;
+    box-shadow: 
+      0 0 8px rgba(255, 255, 255, 0.8),
+      0 0 4px var(--accent-blue) !important;
+  }
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 999999;
+  border-radius: 50%;
+  
+  /* Standard glowing ring (neon blue border, transparent core) */
+  background-color: transparent;
+  border: 1.5px solid rgba(0, 242, 254, 0.5);
+  box-shadow: 
+    0 0 10px rgba(0, 242, 254, 0.15), 
+    inset 0 0 8px rgba(0, 242, 254, 0.05);
+
+  /* GPU acceleration */
+  backface-visibility: hidden;
+  will-change: transform, width, height, opacity, border-radius;
+  
+  transition: 
+    border-color 0.28s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.28s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.28s cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* Expanded state on hovering interactive items */
+  .hovering & {
+    border-color: rgba(177, 0, 255, 0.6); // transition to neon purple
+    background-color: rgba(177, 0, 255, 0.05);
+    box-shadow: 
+      0 0 15px rgba(177, 0, 255, 0.25), 
+      inset 0 0 10px rgba(177, 0, 255, 0.1);
+  }
+
+  /* Click feedback ring transition (glow flashes purple) */
+  .clicking & {
+    border-color: var(--accent-purple) !important;
+    box-shadow: 
+      0 0 20px rgba(177, 0, 255, 0.4), 
+      inset 0 0 12px rgba(177, 0, 255, 0.2) !important;
+  }
+}
+
+.trail-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999998;
+}

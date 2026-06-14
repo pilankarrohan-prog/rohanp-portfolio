@@ -1,0 +1,22 @@
+<section class="achievements-section scroll-reveal" id="achievements" [class.revealed]="isRevealed()">
+    <div class="container">
+        <h2 class="section-title text-glitch" data-text="// MILESTONES">// MILESTONES</h2>
+        
+        <div class="timeline">
+            @for (milestone of milestones(); track milestone.title) {
+                <div class="timeline-item glass-card hover-glow">
+                    <div class="card-glow"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">{{ milestone.date }}</div>
+                    <div class="timeline-content">
+                        <div class="milestone-header">
+                            <svg class="icon milestone-icon"><use [attr.href]="'#' + milestone.icon"/></svg>
+                            <h3>{{ milestone.title }}</h3>
+                        </div>
+                        <p>{{ milestone.description }}</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

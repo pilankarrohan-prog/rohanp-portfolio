@@ -1,0 +1,10 @@
+<div class="custom-cursor-container" 
+     [class.active]="isVisible" 
+     [class.touch-device]="isTouchDevice"
+     [class.clicking]="isClicking"
+     [class.hovering]="isHovered"
+     [class.text-hover]="isTextHovered">
+  <canvas #trailCanvas class="trail-canvas"></canvas>
+  <div #cursorRing class="cursor-ring"></div>
+  <div #cursorDot class="cursor-dot"></div>
+</div>
